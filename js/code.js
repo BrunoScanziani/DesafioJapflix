@@ -52,7 +52,7 @@ btn.addEventListener("click", () => {
                     <p>${element.overview}</p>
                     <hr>
                     <div>
-                        <p id="${element.id + 1}"></p>
+                        <p id="${element.title}"></p>
                             <div class="dropdown div-derecha div-arriba">
                                 <button>More</button>
                                 <div class="dropdown-content white2">
@@ -69,8 +69,13 @@ btn.addEventListener("click", () => {
         </div>
    
             `
+            let rating = document.getElementById(element.id);
+            for (let i = 1; i <= 5; i++) {
+                rating.innerHTML += i <= element.vote_average / 2 ?
+                    `<i class="fa fa-star rating-color"></i>` : `<i class="fa fa-star ratings-i"></i>`
+            }
 
-                let generos = document.getElementById(element.id + 1);
+                let generos = document.getElementById(element.title);
                 let generosHTML = "";
 
                 element.genres.forEach((genre, index) => {
@@ -82,11 +87,7 @@ btn.addEventListener("click", () => {
 
                 generos.innerHTML = generosHTML;
 
-                let rating = document.getElementById(element.id);
-                for (let i = 1; i <= 5; i++) {
-                    rating.innerHTML += i <= element.vote_average / 2 ?
-                        `<i class="fa fa-star rating-color"></i>` : `<i class="fa fa-star ratings-i"></i>`
-                }
+
 
             })
 
